@@ -59,7 +59,7 @@
 
                             <!-- 刪除按鈕 -->
                             <td>
-                                <form action="/task/{{ $task->id }}" method="POST">
+                                <form action="/api/task/{{ $task->id }}" method="POST">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
 
