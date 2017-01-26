@@ -14,9 +14,9 @@ use Illuminate\Http\Request;
 |
 */
 
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
 Route::group(['middleware' => 'web'], function () {
 
@@ -42,7 +42,7 @@ Route::group(['middleware' => 'web'], function () {
         ]);
 
         if ($validator->fails()) {
-            return redirect('/')
+            return redirect('/api')
                 ->withInput()
                 ->withErrors($validator);
         }
@@ -52,7 +52,7 @@ Route::group(['middleware' => 'web'], function () {
         $task->name = $request->name;
         $task->save();
 
-        return redirect('/');
+        return redirect('/api');
     });
 
 
