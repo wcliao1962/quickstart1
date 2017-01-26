@@ -25,7 +25,12 @@ Route::group(['middleware' => 'web'], function () {
      */
     Route::get('/', function () {
         //
-        return view('tasks');
+        $tasks = Task::orderBy('created_at', 'asc')->get();
+
+        return view('tasks', [
+            'tasks' => $tasks
+        ]);
+
     });
 
     /**
@@ -43,6 +48,11 @@ Route::group(['middleware' => 'web'], function () {
         }
 
         // 建立該任務...
+        $task = new Task;
+        $task->name = $request->name;
+        $task->save();
+
+        return redirect('/');
     });
 
 
