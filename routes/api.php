@@ -3,6 +3,9 @@
 use App\Task;
 use Illuminate\Http\Request;
 
+// 認證路由...
+Route::auth();
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
